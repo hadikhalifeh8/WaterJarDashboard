@@ -69,3 +69,221 @@
         }
     }
 </script>
+
+
+
+<!-- //-- START on change a Driver get the Customers that belongs to their Driver -->
+
+<script>
+        
+    $(document).ready(function () {
+        $('select[name="driver_id"]').on('change', function () {
+            var driver_id = $(this).val();
+            if (driver_id) {
+                $.ajax({
+                    url: "{{ URL::to('Get_customer') }}/" + driver_id,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        $('select[name="customer_id"]').empty();
+                        $('select[name="customer_id"]').append('<option selected disabled >Choose...</option>');
+                        $.each(data, function (key, value) {
+                            $('select[name="customer_id"]').append('<option value="' + key + '">' + value + '</option>');
+                        });
+
+                    },
+                });
+            }
+
+            else {
+                console.log('AJAX load did not work');
+            }
+        });
+    });
+</script>
+<!-- //-- End on change a Driver get the Customers that belongs to their Driver -->
+
+
+
+
+
+
+<!-- ---------- -- START on change a Customer get the Town Directly that belongs to their Customer ------ -------------- -->
+<script>
+    $(document).ready(function () {
+        $('select[name="customer_id"]').on('change', function () {
+            var customer_id = $(this).val();
+            if (customer_id) {
+                $.ajax({
+                    url: "{{ URL::to('Get_town') }}/" + customer_id,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+						$('#town_id').val(data.town_id);
+						$('#town_name').val(data.town_name); // Assuming the town_name is returned along with the town ID
+                      
+                    },
+                    error: function (xhr, status, error) {
+                        // console.log(error);
+						console.log("XHR Status: " + status);
+                        console.log("Error: " + error);
+                        console.log(xhr.responseText);
+                    }
+                });
+            } else {
+                console.log('AJAX load did not work');
+            }
+        });
+    });
+</script>
+<!-- ---------- -- END on change a Customer get the Town Directly that belongs to their Customer ------ -------------- -->
+
+
+
+<!-- ---------- -- START on change a Customer get the District that belongs to their Customer ------ -------------- -->
+<script>
+    $(document).ready(function () {
+        $('select[name="customer_id"]').on('change', function () {
+            var customer_id = $(this).val();
+            if (customer_id) {
+                $.ajax({
+                    url: "{{ URL::to('Get_district_s') }}/" + customer_id,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+						 $('#district_id').val(data.district_id);
+						$('#district_name').val(data.district_name); // Assuming the town_name is returned along with the town ID
+                        
+                    },
+                    error: function (xhr, status, error) {
+                       // console.log(error);
+                       console.log("XHR Status: " + status);
+                        console.log("Error: " + error);
+                        console.log(xhr.responseText);
+                    }
+                });
+            } else {
+                console.log('AJAX load did not work');
+            }
+        });
+    });
+</script>
+<!-- ---------- -- END on change a Customer get the District that belongs to their Customer ------ -------------- -->
+
+
+
+
+
+
+
+
+<!-- ---------- -- START GET TANNOURINE PRICE_LIRA ----------- -------------- -->
+<script>
+    $(document).ready(function () {
+        $('select[name="tannourine"]').on('change', function () {
+            var tannourine = $(this).val();
+            if (tannourine) {
+                $.ajax({
+                    url: "{{ URL::to('Get_tannourine_price_Lira') }}/" + tannourine,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        $('#tann_price_Lira').val(data);
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(error);
+                    }
+                });
+            } else {
+                console.log('AJAX load did not work');
+            }
+        });
+    });
+</script>
+<!-- ---------- -- END GET TANNOURINE PRICE_LIRA ----------- -------------- -->
+
+
+
+
+<!-- ---------- -- START GET TANNOURINE PRICE_DOLLAR ----------- -------------- -->
+<script>
+    $(document).ready(function () {
+        $('select[name="tannourine"]').on('change', function () {
+            var tannourine = $(this).val();
+            if (tannourine) {
+                $.ajax({
+                    url: "{{ URL::to('Get_tannourine_price_Dollar') }}/" + tannourine,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        $('#tann_price_Dollar').val(data);
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(error);
+                    }
+                });
+            } else {
+                console.log('AJAX load did not work');
+            }
+        });
+    });
+</script>
+<!-- ---------- -- END GET TANNOURINE PRICE_DOLLAR ----------- -------------- -->
+
+
+
+
+
+
+
+<!-- ---------- -- START GET SEREPTA PRICE_LIRA ----------- -------------- -->
+<script>
+    $(document).ready(function () {
+        $('select[name="serepta"]').on('change', function () {
+            var serepta = $(this).val();
+            if (serepta) {
+                $.ajax({
+                    url: "{{ URL::to('Get_Serepta_price_Lira') }}/" + serepta,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        $('#serep_price_Lira').val(data);
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(error);
+                    }
+                });
+            } else {
+                console.log('AJAX load did not work');
+            }
+        });
+    });
+</script>
+<!-- ---------- -- END GET SEREPTA PRICE_LIRA ----------- -------------- -->
+
+
+
+<!-- ---------- -- START GET SEREPTA PRICE_DOLLAR ----------- -------------- -->
+<script>
+    $(document).ready(function () {
+        $('select[name="serepta"]').on('change', function () {
+            var serepta = $(this).val();
+            if (serepta) {
+                $.ajax({
+                    url: "{{ URL::to('Get_Serepta_price_Dollar') }}/" + serepta,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        $('#serep_price_Dollar').val(data);
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(error);
+                    }
+                });
+            } else {
+                console.log('AJAX load did not work');
+            }
+        });
+    });
+</script>
+<!-- ---------- -- END GET SEREPTA PRICE_DOLLAR ----------- -------------- -->

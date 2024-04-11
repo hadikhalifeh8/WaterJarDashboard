@@ -99,40 +99,31 @@
                                           
 
 
-
-
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="">{{ trans('customers_OrdersTransl.driver_name') }} :</label>
-                                <select class="custom-select" name="driver_id" onchange="console.log($(this).val())">
-                                        <option   value="{{$customerOrders->driver_rltn->id}}"> {{$customerOrders->driver_rltn->name}}</option>
-                                    @foreach($driver as $V_driver)
-                                        <option value="{{$V_driver->id}}">{{$V_driver->name}}</option>
-                                    @endforeach
-                                            
-                                        </select>
-                     
-                            </div></div>
-                            </div><br>
-
-
-							<div class="row">
-                            <div class="col">
-                            <label for="inputName">{{ trans('customers_OrdersTransl.customer') }} :</label>
-                                <select class="custom-select" name="customer_id">       
-                                <option
-                                       value="{{ $customerOrders->customer_rltn->id }}">
-                                       {{ $customerOrders->customer_rltn->name }}
-                                 </option> 
-                                    
-                                
-                                </select>
-                            </div>
-                            </div>
-
-                            <input id="id" type="text" name="id" class="form-control"
+                     <input id="id" type="hidden" name="id" class="form-control"
                                                     value="{{$customerOrders->id}}">
+
+
+                                                    <div class="row">
+							<div class="col">
+                                            <label for="Name"
+                                                class="mr-sm-2">{{ trans('customers_OrdersTransl.driver_name') }}
+                                                :</label>
+                                <input class="form-control" type="text"  name="driver_name"  value="{{$customerOrders->driver_rltn->name}}"  readonly>
+                                <input class="form-control" type="hidden" name="driver_id"  value="{{ $customerOrders->driver_rltn->id}}">
+                            </div>
+
+
+                                        <div class="col">
+                                            <label for="Name"
+                                                class="mr-sm-2">{{ trans('customers_OrdersTransl.customer') }}
+                                                :</label>
+                                <input class="form-control" type="text" name="customer_name"  value="{{$customerOrders->customer_rltn->name}}" readonly>
+                                <input class="form-control" type="hidden" name="customer_id"  value="{{$customerOrders->customer_rltn->id}}">
+                                       
+                                </div>
+                        </div><br>                                
+
+
                             
                             <br>
 
@@ -142,8 +133,8 @@
                                             <label for="Name"
                                                 class="mr-sm-2">{{ trans('customers_OrdersTransl.town') }}
                                                 :</label>
-                                <input class="form-control" type="text"  name="town_name" id="town_name" value="{{$customerOrders->towns_rltn->name}}"  readonly />
-                                <input class="form-control" type="hidden" name="town_id" id="town_id" value="{{ $customerOrders->towns_rltn->id}}" readonly />
+                                <input class="form-control" type="text"  name="town_name" id="town_name" value="{{$customerOrders->towns_rltn->name}}"  readonly>
+                                <input class="form-control" type="hidden" name="town_id" id="town_id" value="{{ $customerOrders->towns_rltn->id}}">
                             </div>
 
 
@@ -151,8 +142,8 @@
                                             <label for="Name"
                                                 class="mr-sm-2">{{ trans('customers_OrdersTransl.district_name') }}
                                                 :</label>
-                                <input class="form-control" type="text" name="district_name"   id="district_name" value="{{$customerOrders->district_rltn->name}}" readonly />
-                                <input class="form-control" type="hidden" name="district_id" id="district_id" value="{{$customerOrders->district_rltn->id}}" readonly />
+                                <input class="form-control" type="text" name="district_name"  id="district_name" value="{{$customerOrders->district_rltn->name}}" readonly>
+                                <input class="form-control" type="hidden" name="district_id" id="district_id" value="{{$customerOrders->district_rltn->id}}">
                                        
                                 </div>
                         </div><br>
@@ -163,21 +154,15 @@
 
 
                         <div class="row">
-                        <div class="col-md-5">
-    <div class="form-group">
-        <label for="">{{ trans('customers_OrdersTransl.tannourine_name') }} :</label>
-        <select class="custom-select" name="tannourine" onchange="console.log($(this).val())">
-            @if($customerOrders->tannourine_rltn)
-                <option value="{{$customerOrders->tannourine_rltn->id}}">{{$customerOrders->tannourine_rltn->name}}</option>
-            @else
-                <option value=""></option>
-            @endif
-            @foreach($tannourine as $V_tannourine)
-                <option value="{{$V_tannourine->id}}">{{$V_tannourine->name}}</option>
-            @endforeach
-        </select>
-    </div>
-</div>
+                     <div class="col">
+                             <label for="Name"
+                              class="mr-sm-2">{{ trans('customers_OrdersTransl.tannourine_name') }}
+                              :</label>
+                             <input class="form-control" type="text"  name="tannourine_"  value="{{ isset($customerOrders->tannourine_rltn) ? $customerOrders->tannourine_rltn->name : '' }}"  readonly>
+                         <input class="form-control" type="hidden" name="tannourine"  value="{{ $customerOrders->tannourine_rltn ? $customerOrders->tannourine_rltn->id : '' }}">
+                            </div>
+
+
 
                                 <div class="col">
                                             <label for="Name"
@@ -205,21 +190,13 @@
                     <br>
 
                     <div class="row">
-                    <div class="col-md-5">
-    <div class="form-group">
-        <label for="">{{ trans('customers_OrdersTransl.serepta_name') }} :</label>
-        <select class="custom-select" name="serepta" onchange="console.log($(this).val())">
-            @if($customerOrders->serepta_rltn)
-                <option value="{{$customerOrders->serepta_rltn->id}}">{{$customerOrders->serepta_rltn->name }}</option>
-            @else
-                <option value=""></option>
-            @endif
-            @foreach($serepta as $V_serepta)
-                <option value="{{$V_serepta->id}}">{{$V_serepta->name}}</option>
-            @endforeach
-        </select>
-    </div>
-</div>
+                        <div class="col">
+                             <label for="Name"
+                              class="mr-sm-2">{{ trans('customers_OrdersTransl.serepta_name') }}
+                              :</label>
+                             <input class="form-control" type="text"  name="serepta_"  value="{{ isset($customerOrders->serepta_rltn) ? $customerOrders->serepta_rltn->name : '' }}"  readonly>
+                         <input class="form-control" type="hidden" name="serepta"  value="{{ $customerOrders->serepta_rltn ? $customerOrders->serepta_rltn->id : '' }}">
+                            </div>
 
                     <div class="col">
                                    <label for="Name"
@@ -227,9 +204,7 @@
                                          :</label>
                                        <input class="form-control" step="any" type="number" value="{{$customerOrders->srpta_price_Lira}}"
                                         min="0" name="serep_price_Lira"
-                                        id="serep_price_Lira"
-                                            
-                                            
+                                        
                                             onkeypress="return restrictChars(event)" >
                                         </div>
 
@@ -240,7 +215,7 @@
                                                 :</label>
                                             <input class="form-control" step="any" type="number" min="0" value="{{$customerOrders->srpta_price_Dollar}}"
                                              name="serep_price_Dollar"
-                                            id="serep_price_Dollar"
+                                            
                                              onkeypress="return restrictChars(event)" />
                                         </div>
                            
@@ -361,8 +336,8 @@
                                             <label for="Name"
                                                 class="mr-sm-2">{{ trans('customers_OrdersTransl.town') }}
                                                 :</label>
-                                <input class="form-control" type="text"  name="town_name" id="town_name"  readonly />
-                                <input class="form-control" type="hidden" name="town_id" id="town_id" readonly />
+                                <input class="form-control" type="text"  name="town_name" id="towns_name"  readonly />
+                                <input class="form-control" type="hidden" name="town_id" id="towns_id">
                             </div>
 
 
@@ -370,8 +345,8 @@
                                             <label for="Name"
                                                 class="mr-sm-2">{{ trans('customers_OrdersTransl.district_name') }}
                                                 :</label>
-                                <input class="form-control" type="text" name="district_name"   id="district_name" readonly />
-                                <input class="form-control" type="hidden" name="district_id" id="district_id" readonly />
+                                <input class="form-control" type="text" name="district_name"   id="districts_name" readonly />
+                                <input class="form-control" type="hidden" name="district_id" id="districts_id">
                                        
                                 </div>
                         </div><br>
@@ -401,7 +376,7 @@
                                                 class="mr-sm-2">{{ trans('customers_OrdersTransl.tann_price_Lira') }}
                                                 :</label>
                                             <input class="form-control" step="any" type="number" min="0" name="tann_price_Lira" 
-                                            id="tann_price_Lira"
+                                            id="tann_price_Lira_s"
                                             onkeypress="return restrictChars(event)" />
                                         </div>
 
@@ -412,7 +387,7 @@
                                                 :</label>
                                             <input class="form-control" step="any" type="number" min="0"
                                               name="tann_price_Dollar"
-                                              id="tann_price_Dollar"
+                                              id="tann_price_Dollar_s"
                                               onkeypress="return restrictChars(event)" />
                                         </div>
                            
@@ -442,7 +417,7 @@
                                          :</label>
                                        <input class="form-control" step="any" type="number"
                                         min="0" name="serep_price_Lira"
-                                        id="serep_price_Lira"
+                                        id="serep_price_Lira_s"
                                             
                                             
                                             onkeypress="return restrictChars(event)" >
@@ -454,7 +429,7 @@
                                                 class="mr-sm-2">{{ trans('customers_OrdersTransl.serep_price_Dollar') }}
                                                 :</label>
                                             <input class="form-control" step="any" type="number" min="0" name="serep_price_Dollar"
-                                            id="serep_price_Dollar"
+                                            id="serep_price_Dollar_s"
                                              onkeypress="return restrictChars(event)" />
                                         </div>
                            
@@ -496,40 +471,21 @@
 
 
 
-<!-- //-- START on change a Driver get the Customers that belongs to their Driver -->
-
-<script>
-        
-    $(document).ready(function () {
-        $('select[name="driver_id"]').on('change', function () {
-            var driver_id = $(this).val();
-            if (driver_id) {
-                $.ajax({
-                    url: "{{ URL::to('Get_customer') }}/" + driver_id,
-                    type: "GET",
-                    dataType: "json",
-                    success: function (data) {
-                        $('select[name="customer_id"]').empty();
-                        $('select[name="customer_id"]').append('<option selected disabled >Choose...</option>');
-                        $.each(data, function (key, value) {
-                            $('select[name="customer_id"]').append('<option value="' + key + '">' + value + '</option>');
-                        });
-
-                    },
-                });
-            }
-
-            else {
-                console.log('AJAX load did not work');
-            }
-        });
-    });
-</script>
-<!-- //-- End on change a Driver get the Customers that belongs to their Driver -->
 
 
 
-<!-- ---------- -- START on change a Customer get the Town Directly that belongs to their Customer ------ -------------- -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- ---------- For Add -- START on change a Customer get the Town Directly that belongs to their Customer ------ -------------- -->
 <script>
     $(document).ready(function () {
         $('select[name="customer_id"]').on('change', function () {
@@ -540,8 +496,8 @@
                     type: "GET",
                     dataType: "json",
                     success: function (data) {
-						$('#town_id').val(data.town_id);
-						$('#town_name').val(data.town_name); // Assuming the town_name is returned along with the town ID
+						$('#towns_id').val(data.town_id);
+						$('#towns_name').val(data.town_name); // Assuming the town_name is returned along with the town ID
                       
                     },
                     error: function (xhr, status, error) {
@@ -560,8 +516,7 @@
 <!-- ---------- -- END on change a Customer get the Town Directly that belongs to their Customer ------ -------------- -->
 
 
-
-<!-- ---------- -- START on change a Customer get the District that belongs to their Customer ------ -------------- -->
+<!-- ----------For Add -- START on change a Customer get the District that belongs to their Customer ------ -------------- -->
 <script>
     $(document).ready(function () {
         $('select[name="customer_id"]').on('change', function () {
@@ -572,12 +527,15 @@
                     type: "GET",
                     dataType: "json",
                     success: function (data) {
-						 $('#district_id').val(data.district_id);
-						$('#district_name').val(data.district_name); // Assuming the town_name is returned along with the town ID
+						 $('#districts_id').val(data.district_id);
+						$('#districts_name').val(data.district_name); // Assuming the town_name is returned along with the town ID
                         
                     },
                     error: function (xhr, status, error) {
-                        console.log(error);
+                       // console.log(error);
+                       console.log("XHR Status: " + status);
+                        console.log("Error: " + error);
+                        console.log(xhr.responseText);
                     }
                 });
             } else {
@@ -592,10 +550,7 @@
 
 
 
-
-
-
-<!-- ---------- -- START GET TANNOURINE PRICE_LIRA ----------- -------------- -->
+<!-- ----------For Add -- START GET TANNOURINE PRICE_LIRA ----------- -------------- -->
 <script>
     $(document).ready(function () {
         $('select[name="tannourine"]').on('change', function () {
@@ -606,7 +561,7 @@
                     type: "GET",
                     dataType: "json",
                     success: function (data) {
-                        $('#tann_price_Lira').val(data);
+                        $('#tann_price_Lira_s').val(data);
                     },
                     error: function (xhr, status, error) {
                         console.log(error);
@@ -625,7 +580,8 @@
 
 
 
-<!-- ---------- -- START GET TANNOURINE PRICE_DOLLAR ----------- -------------- -->
+
+<!-- ----------For Add -- START GET TANNOURINE PRICE_DOLLAR ----------- -------------- -->
 <script>
     $(document).ready(function () {
         $('select[name="tannourine"]').on('change', function () {
@@ -636,7 +592,7 @@
                     type: "GET",
                     dataType: "json",
                     success: function (data) {
-                        $('#tann_price_Dollar').val(data);
+                        $('#tann_price_Dollar_s').val(data);
                     },
                     error: function (xhr, status, error) {
                         console.log(error);
@@ -656,7 +612,7 @@
 
 
 
-<!-- ---------- -- START GET SEREPTA PRICE_LIRA ----------- -------------- -->
+<!-- ----------for Add -- START GET SEREPTA PRICE_LIRA ----------- -------------- -->
 <script>
     $(document).ready(function () {
         $('select[name="serepta"]').on('change', function () {
@@ -667,7 +623,7 @@
                     type: "GET",
                     dataType: "json",
                     success: function (data) {
-                        $('#serep_price_Lira').val(data);
+                        $('#serep_price_Lira_s').val(data);
                     },
                     error: function (xhr, status, error) {
                         console.log(error);
@@ -683,7 +639,7 @@
 
 
 
-<!-- ---------- -- START GET SEREPTA PRICE_DOLLAR ----------- -------------- -->
+<!-- ----------for Add -- START GET SEREPTA PRICE_DOLLAR ----------- -------------- -->
 <script>
     $(document).ready(function () {
         $('select[name="serepta"]').on('change', function () {
@@ -694,7 +650,7 @@
                     type: "GET",
                     dataType: "json",
                     success: function (data) {
-                        $('#serep_price_Dollar').val(data);
+                        $('#serep_price_Dollar_s').val(data);
                     },
                     error: function (xhr, status, error) {
                         console.log(error);
@@ -707,7 +663,6 @@
     });
 </script>
 <!-- ---------- -- END GET SEREPTA PRICE_DOLLAR ----------- -------------- -->
-
 
 
 
