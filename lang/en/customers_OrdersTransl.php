@@ -7,7 +7,7 @@ return [
 
 
 'add_customer_order' =>'Add Customer Order',
-'update_customer_order' =>'update Customer Order',
+'update_customer' =>'update Customer Order',
 
 
 

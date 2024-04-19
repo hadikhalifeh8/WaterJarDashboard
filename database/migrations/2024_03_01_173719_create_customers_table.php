@@ -17,10 +17,19 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('phone')->unique();
+
             $table->bigInteger('town_id')->unsigned();
+            $table->string('town_name_ar')->nullable();
+            $table->string('town_name_en')->nullable();
+
+
             $table->bigInteger('district_id')->unsigned();
+            $table->string('district_name_ar')->nullable();
+            $table->string('district_name_en')->nullable();
 
             $table->bigInteger('driver_id')->unsigned();
+            $table->string('driver_name_ar')->nullable();
+            $table->string('driver_name_en')->nullable();
 
 
             $table->foreign('town_id')->references('id')->on('towns')->onDelete('cascade');

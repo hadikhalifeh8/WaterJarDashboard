@@ -128,8 +128,8 @@
                                     <label for=""
                                            class="mr-sm-2">{{ trans('customersTransl.phne_no') }}
                                         :</label>
-                                    <input type="number" step="1" min="0" class="form-control" name="phone" 
-                                    value="{{$V_customers->phone}}"
+                                    <input type="number" step="1" min="0" class="form-control" name="phone" required
+                                    value="{{$V_customers->phone}}" 
                                     onkeypress="return restrictChars(event)">
                                 </div>
                             </div><br>

@@ -52,38 +52,74 @@ class CustomerOrdersController extends Controller
     public function store(StoreCustomersOrders $request)
     {
         try {
-           
+            // Validate the request
             $validated = $request->validated();
-            
     
-               $insert_customers_orders = new CustomerOrdersModel();
+            // Load all towns, districts, drivers, and customers
+            $towns = TownsModel::all();
+            $districts = DistrictsModel::all();
+            $drivers = DriversModel::all();
+            $customers = CustomersModel::all();
+            $serepta = SereptaModel::all();
 
-               $insert_customers_orders->driver_id = $request->driver_id;
-               $insert_customers_orders->customer_id = $request->customer_id;
+    
+            // Create a new customer orders instance
+            $insert_customers_orders = new CustomerOrdersModel();
+    
+            // Set customer orders attributes
+            $insert_customers_orders->driver_id = $request->driver_id;
+            $insert_customers_orders->customer_id = $request->customer_id;
+            $insert_customers_orders->town_id = $request->town_id;
+            $insert_customers_orders->district_id = $request->district_id;
+            // $insert_customers_orders->tannourine_id = $request->tannourine;
+            // $insert_customers_orders->tann_price_Lira = $request->tann_price_Lira;
+            // $insert_customers_orders->tann_price_Dollar = $request->tann_price_Dollar;
+            $insert_customers_orders->serepta_id = $request->serepta;
+            $insert_customers_orders->srpta_price_Lira = $request->serep_price_Lira;
+            $insert_customers_orders->srpta_price_Dollar = $request->serep_price_Dollar;
+    
+            // Find associated driver, customer, town, and district
+            $driver = $drivers->find($request->driver_id);
+            $customer = $customers->find($request->customer_id);
+            $town = $towns->find($request->town_id);
+            $district = $districts->find($request->district_id);
+            $serepta = $serepta->find($request->serepta);
 
     
-               $insert_customers_orders->town_id = $request->town_id;
-               $insert_customers_orders->district_id = $request->district_id;
+            // If driver, customer, town, and district are found, set their translations
+            if ($driver) {
+                $insert_customers_orders->driver_name_ar = $driver->getTranslation('name', 'ar');
+                $insert_customers_orders->driver_name_en = $driver->getTranslation('name', 'en');
+            }
     
-              
+            if ($customer) {
+                $insert_customers_orders->customer_name_ar = $customer->getTranslation('name', 'ar');
+                $insert_customers_orders->customer_name_en = $customer->getTranslation('name', 'en');
+            }
     
+            if ($town) {
+                $insert_customers_orders->town_name_ar = $town->getTranslation('name', 'ar');
+                $insert_customers_orders->town_name_en = $town->getTranslation('name', 'en');
+            }
     
-               $insert_customers_orders->tannourine_id = $request->tannourine;
-               $insert_customers_orders->tann_price_Lira = $request->tann_price_Lira;
-               $insert_customers_orders->tann_price_Dollar = $request->tann_price_Dollar;
+            if ($district) {
+                $insert_customers_orders->district_name_ar = $district->getTranslation('name', 'ar');
+                $insert_customers_orders->district_name_en = $district->getTranslation('name', 'en');
+            }
+
+            if ($serepta) {
+                $insert_customers_orders->serepta_name_ar = $serepta->getTranslation('name', 'ar');
+                $insert_customers_orders->serepta_name_en = $serepta->getTranslation('name', 'en');
+            }
     
+            // Save the customer orders
+            $insert_customers_orders->save();
     
-               $insert_customers_orders->serepta_id = $request->serepta;
-               $insert_customers_orders->srpta_price_Lira = $request->serep_price_Lira;
-               $insert_customers_orders->srpta_price_Dollar = $request->serep_price_Dollar;
-    
-               $insert_customers_orders->save();
-    
-           
-    
+            // Redirect with success message
             toastr()->success(trans('messages.success'));
-           return redirect()->route('CustomerOrders.index');
-       } catch (\Exception $e) {
+            return redirect()->route('CustomerOrders.index');
+        } catch (\Exception $e) {
+            // Redirect with error message
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }
@@ -120,31 +156,75 @@ class CustomerOrdersController extends Controller
     public function update(StoreCustomersOrders $request)
     {
         try {
+            // Validate the request
             $validated = $request->validated();
     
-            $update_customer = CustomerOrdersModel::findOrFail($request->id); 
-            $update_customer->update([
-
+            // Find the customer order to update
+            $update_customer_order = CustomerOrdersModel::findOrFail($request->id); 
+    
+            // Update the customer order with new values
+            $update_customer_order->update([
                 'driver_id' => $request->driver_id,
                 'customer_id' => $request->customer_id,
-            
-               'town_id' => $request->town_id,
-               'district_id' => $request->district_id,
-            
-    
-            'tannourine_id' => $request->tannourine,
-            'tann_price_Lira' => $request->tann_price_Lira,
-            'tann_price_Dollar' => $request->tann_price_Dollar,
-    
-            'serepta_id' => $request->serepta,
-            'srpta_price_Lira' => $request->serep_price_Lira,
-            'srpta_price_Dollar' => $request->serep_price_Dollar,
-            
+                'town_id' => $request->town_id,
+                'district_id' => $request->district_id,
+                // 'tannourine_id' => $request->tannourine,
+                // 'tann_price_Lira' => $request->tann_price_Lira,
+                // 'tann_price_Dollar' => $request->tann_price_Dollar,
+                'serepta_id' => $request->serepta,
+                'srpta_price_Lira' => $request->serep_price_Lira,
+                'srpta_price_Dollar' => $request->serep_price_Dollar,
             ]); 
     
+            // Load all towns, districts, drivers, and customers
+            $towns = TownsModel::all();
+            $districts = DistrictsModel::all();
+            $drivers = DriversModel::all();
+            $customers = CustomersModel::all();
+            $serepta = SereptaModel::all();
+    
+            // Find associated driver, customer, town, and district
+            $driver = $drivers->find($request->driver_id);
+            $customer = $customers->find($request->customer_id);
+            $town = $towns->find($request->town_id);
+            $district = $districts->find($request->district_id);
+            $serepta = $serepta->find($request->serepta);
+
+    
+            // If driver, customer, town, and district are found, set their translations
+            if ($driver) {
+                $update_customer_order->driver_name_ar = $driver->getTranslation('name', 'ar');
+                $update_customer_order->driver_name_en = $driver->getTranslation('name', 'en');
+            }
+    
+            if ($customer) {
+                $update_customer_order->customer_name_ar = $customer->getTranslation('name', 'ar');
+                $update_customer_order->customer_name_en = $customer->getTranslation('name', 'en');
+            }
+    
+            if ($town) {
+                $update_customer_order->town_name_ar = $town->getTranslation('name', 'ar');
+                $update_customer_order->town_name_en = $town->getTranslation('name', 'en');
+            }
+    
+            if ($district) {
+                $update_customer_order->district_name_ar = $district->getTranslation('name', 'ar');
+                $update_customer_order->district_name_en = $district->getTranslation('name', 'en');
+            }
+
+            if ($serepta) {
+                $update_customer_order->serepta_name_ar = $serepta->getTranslation('name', 'ar');
+                $update_customer_order->serepta_name_en = $serepta->getTranslation('name', 'en');
+            }
+    
+            // Save the updated customer order
+            $update_customer_order->save();
+    
+            // Redirect with success message
             toastr()->info(trans('messages.update'));
             return redirect()->route('CustomerOrders.index');
         } catch (\Exception $e) {
+            // Redirect with error message
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }
@@ -225,6 +305,31 @@ class CustomerOrdersController extends Controller
         $serepta_price_Dollar = SereptaModel::where("id", $id)->pluck( "price_Dollar", );
         return $serepta_price_Dollar;
 
+    }
+
+
+
+
+
+    // API
+    public function viewCustomerOrder()
+    {
+        $customerOrder = CustomerOrdersModel::all();
+        
+        if($customerOrder)    {
+                
+            return response()->json([
+                'status' => 'success',
+                'data' => $customerOrder,
+            ]);
+        
+        }else{
+            return response()->json([
+                'status' => 'failure',
+                'data' => 'null',
+            ]);
+
+        }
     }
 
 

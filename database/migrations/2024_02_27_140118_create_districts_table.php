@@ -17,6 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->bigInteger('town_id')->unsigned();
+            $table->string('town_name_ar')->nullable();
+            $table->string('town_name_en')->nullable();
+
+
             $table->foreign('town_id')->references('id')->on('towns')->onDelete('cascade');
             $table->timestamps();
         });

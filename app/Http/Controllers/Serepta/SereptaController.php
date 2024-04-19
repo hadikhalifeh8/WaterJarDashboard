@@ -123,4 +123,30 @@ class SereptaController extends Controller
         toastr()->error(trans('messages.delete'));
         return redirect()->route('Serepta.index');
     }
+
+
+
+
+
+    // API
+    public function viewSerepta()
+    {
+        $serepta = SereptaModel::all();
+        
+        // $districts = DistrictsModel::with('towns_rltn')->get();
+         if($serepta) {
+                 
+             return response()->json([
+                 'status' => 'success',
+                 'data' => $serepta,
+             ]);
+         
+         }else{
+             return response()->json([
+                 'status' => 'failure',
+                 'data' => 'null',
+             ]);
+ 
+         }
+    }
 }

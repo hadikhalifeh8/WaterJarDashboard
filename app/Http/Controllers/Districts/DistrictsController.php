@@ -41,24 +41,48 @@ class DistrictsController extends Controller
      */
     public function store(StoreDistricts $request)
     {
-        $List_Districts = $request->List_Districts;
-
+        // Load all towns
+        $towns = TownsModel::all();
+        
+        // Get list of districts from the request
+        $list_districts = $request->List_Districts;
+    
         try {
-
+            // Validate the request
             $validated = $request->validated();
-           foreach ($List_Districts as $List_Districts) {
-
-               $insert_districts = new DistrictsModel();
-               $insert_districts->name = ['en' => $List_Districts['name_en'], 'ar' => $List_Districts['name_ar']];
-               $insert_districts->town_id = $List_Districts['town'];
-
-               $insert_districts->save();
-
-           }
-
+    
+            // Iterate over each district in the list
+            foreach ($list_districts as $districtData) {
+                // Create a new district instance
+                $insert_districts = new DistrictsModel();
+                
+                // Set district name
+                $insert_districts->name = [
+                    'en' => $districtData['name_en'],
+                    'ar' => $districtData['name_ar']
+                ];
+    
+                // Set town ID for the district
+                $insert_districts->town_id = $districtData['town'];
+    
+                // Find the associated town
+                $town = $towns->find($districtData['town']);
+    
+                // If town is found, set its translations
+                if ($town) {
+                    $insert_districts->town_name_ar = $town->getTranslation('name', 'ar');
+                    $insert_districts->town_name_en = $town->getTranslation('name', 'en');
+                }
+    
+                // Save the district
+                $insert_districts->save();
+            }
+    
+            // Redirect with success message
             toastr()->success(trans('messages.success'));
-           return redirect()->route('Districts.index');
-       } catch (\Exception $e) {
+            return redirect()->route('Districts.index');
+        } catch (\Exception $e) {
+            // Redirect with error message
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }
@@ -93,22 +117,38 @@ class DistrictsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(StoreDistricts $request)
-{
-    try {
-        $validated = $request->validated();
-
-        $update_district = DistrictsModel::findOrFail($request->id); 
-        $update_district->update([
-            'name' => ['en' => $request->name_en, 'ar' => $request->name_ar],
-            'town_id' => $request->town,
-        ]); 
-
-        toastr()->info(trans('messages.update'));
-        return redirect()->route('Districts.index');
-    } catch (\Exception $e) {
-        return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+    {
+        try {
+            // Validate the request
+            $validated = $request->validated();
+    
+            // Find the district to update
+            $update_district = DistrictsModel::findOrFail($request->id); 
+    
+            // Update the district with new values
+            $update_district->update([
+                'name' => ['en' => $request->name_en, 'ar' => $request->name_ar],
+                'town_id' => $request->town,
+            ]); 
+    
+            // Find the associated town
+            $town = TownsModel::find($request->town);
+    
+            // If town is found, set its translations
+            if ($town) {
+                $update_district->town_name_ar = $town->getTranslation('name', 'ar');
+                $update_district->town_name_en = $town->getTranslation('name', 'en');
+                $update_district->save();
+            }
+    
+            // Redirect with success message
+            toastr()->info(trans('messages.update'));
+            return redirect()->route('Districts.index');
+        } catch (\Exception $e) {
+            // Redirect with error message
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
-}
 
     /**
      * Remove the specified resource from storage.
@@ -124,6 +164,38 @@ class DistrictsController extends Controller
     }
 
 
+   // API
+    public function viewDistricts()
+    {
+         $districts = DistrictsModel::all();
+        
+       // $districts = DistrictsModel::with('towns_rltn')->get();
+        if($districts)    {
+                
+            return response()->json([
+                'status' => 'success',
+                'data' => $districts,
+            ]);
+        
+        }else{
+            return response()->json([
+                'status' => 'failure',
+                'data' => 'null',
+            ]);
+
+        }
+    }
+
+
 
  
 }
+
+
+// "id" INTEGER,
+// "name" TEXT,
+// "town_id" INTEGER,
+// "town_name_ar" TEXT,
+// "town_name_en" TEXT,
+// "created_at" TEXT,
+// "updated_at" TEXT,

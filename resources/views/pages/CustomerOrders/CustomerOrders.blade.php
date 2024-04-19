@@ -153,38 +153,7 @@
 
 
 
-                        <div class="row">
-                     <div class="col">
-                             <label for="Name"
-                              class="mr-sm-2">{{ trans('customers_OrdersTransl.tannourine_name') }}
-                              :</label>
-                             <input class="form-control" type="text"  name="tannourine_"  value="{{ isset($customerOrders->tannourine_rltn) ? $customerOrders->tannourine_rltn->name : '' }}"  readonly>
-                         <input class="form-control" type="hidden" name="tannourine"  value="{{ $customerOrders->tannourine_rltn ? $customerOrders->tannourine_rltn->id : '' }}">
-                            </div>
 
-
-
-                                <div class="col">
-                                            <label for="Name"
-                                                class="mr-sm-2">{{ trans('customers_OrdersTransl.tann_price_Lira') }}
-                                                :</label>
-                                            <input class="form-control" step="any" type="number" min="0" name="tann_price_Lira" value="{{$customerOrders->tann_price_Lira}}"
-                                            id="tann_price_Lira"
-                                            onkeypress="return restrictChars(event)" />
-                                        </div>
-
-
-                                        <div class="col">
-                                            <label for="Name"
-                                                class="mr-sm-2">{{ trans('customers_OrdersTransl.tann_price_Dollar') }}
-                                                :</label>
-                                            <input class="form-control" step="any" type="number" min="0" value="{{$customerOrders->tann_price_Dollar}}"
-                                              name="tann_price_Dollar"
-                                              id="tann_price_Dollar"
-                                              onkeypress="return restrictChars(event)" />
-                                        </div>
-                           
-                    </div>
                     
                     
                     <br>
@@ -356,42 +325,7 @@
 
 
 
-                            <div class="row">
-                            <div class="col-md-5">
-                            <div class="form-group">
-                                <label for="">{{ trans('customers_OrdersTransl.tannourine_name') }} :</label>
-                                <select class="custom-select" name="tannourine" onchange="console.log($(this).val())">
-                                        <option   selected disabled>{{ trans('customers_OrdersTransl.choose_a_product') }}</option>
-                                    @foreach($tannourine as $V_tannourine)
-                                        <option value="{{$V_tannourine->id}}">{{$V_tannourine->name}}</option>
-                                    @endforeach
-                                            
-                                        </select>
-                     
-                            </div>
-                    </div>
 
-                                <div class="col">
-                                            <label for="Name"
-                                                class="mr-sm-2">{{ trans('customers_OrdersTransl.tann_price_Lira') }}
-                                                :</label>
-                                            <input class="form-control" step="any" type="number" min="0" name="tann_price_Lira" 
-                                            id="tann_price_Lira_s"
-                                            onkeypress="return restrictChars(event)" />
-                                        </div>
-
-
-                                        <div class="col">
-                                            <label for="Name"
-                                                class="mr-sm-2">{{ trans('customers_OrdersTransl.tann_price_Dollar') }}
-                                                :</label>
-                                            <input class="form-control" step="any" type="number" min="0"
-                                              name="tann_price_Dollar"
-                                              id="tann_price_Dollar_s"
-                                              onkeypress="return restrictChars(event)" />
-                                        </div>
-                           
-                    </div>
                     
                     
                     <br>

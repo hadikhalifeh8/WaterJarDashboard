@@ -49,41 +49,59 @@ class CustomersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StoreCustomers $request)
-     { 
-       //  return $request;
-       try {
-           
-        $validated = $request->validated();
-        
-
-           $insert_customers = new CustomersModel();
-           $insert_customers->name = ['en' => $request->name_en, 'ar' => $request->name_ar];
-           $insert_customers->phone = $request->phone;
-
-           $insert_customers->town_id = $request->town_id;
-           $insert_customers->district_id = $request->district_id;
-
-           $insert_customers->driver_id = $request->driver_id;
-
-
-        //    $insert_customers->tannouurine_id = $request->tannourine;
-        //    $insert_customers->tann_price_Lira = $request->tann_price_Lira;
-        //    $insert_customers->tann_price_Dollar = $request->tann_price_Dollar;
-
-
-        //    $insert_customers->serepta_id = $request->serepta;
-        //    $insert_customers->serep_price_Lira = $request->serep_price_Lira;
-        //    $insert_customers->serep_price_Dollar = $request->serep_price_Dollar;
-
-           $insert_customers->save();
-
-       
-
-        toastr()->success(trans('messages.success'));
-       return redirect()->route('Customers.index');
-   } catch (\Exception $e) {
-        return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-    }
+    {
+        try {
+            // Validate the request
+            $validated = $request->validated();
+    
+            // Load all towns, districts, and drivers
+            $towns = TownsModel::all();
+            $districts = DistrictsModel::all();
+            $drivers = DriversModel::all();
+    
+            // Create a new customers instance
+            $insert_customers = new CustomersModel();
+            
+            // Set customer's name and phone
+            $insert_customers->name = ['en' => $request->name_en, 'ar' => $request->name_ar];
+            $insert_customers->phone = $request->phone;
+    
+            // Set town, district, and driver IDs
+            $insert_customers->town_id = $request->town_id;
+            $insert_customers->district_id = $request->district_id;
+            $insert_customers->driver_id = $request->driver_id;
+    
+            // Find associated town, district, and driver
+            $town = $towns->find($request->town_id);
+            $district = $districts->find($request->district_id);
+            $driver = $drivers->find($request->driver_id);
+    
+            // If town, district, and driver are found, set their translations
+            if ($town) {
+                $insert_customers->town_name_ar = $town->getTranslation('name', 'ar');
+                $insert_customers->town_name_en = $town->getTranslation('name', 'en');
+            }
+    
+            if ($district) {
+                $insert_customers->district_name_ar = $district->getTranslation('name', 'ar');
+                $insert_customers->district_name_en = $district->getTranslation('name', 'en');
+            }
+    
+            if ($driver) {
+                $insert_customers->driver_name_ar = $driver->getTranslation('name', 'ar');
+                $insert_customers->driver_name_en = $driver->getTranslation('name', 'en');
+            }
+    
+            // Save the customer
+            $insert_customers->save();
+    
+            // Redirect with success message
+            toastr()->success(trans('messages.success'));
+            return redirect()->route('Customers.index');
+        } catch (\Exception $e) {
+            // Redirect with error message
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -118,30 +136,55 @@ class CustomersController extends Controller
     public function update(StoreCustomers $request)
     {
         try {
+            // Validate the request
             $validated = $request->validated();
     
+            // Find the customer to update
             $update_customer = CustomersModel::findOrFail($request->id); 
+    
+            // Update the customer with new values
             $update_customer->update([
-            'name' => ['en' => $request->name_en, 'ar' => $request->name_ar],
-            'phone' => $request->phone,
-    
-            'town_id' => $request->town_id,
-            'district_id' => $request->district_id,
-            'driver_id' => $request->driver_id,
-    
-            // 'tannouurine_id' => $request->tannourine,
-            // 'tann_price_Lira' => $request->tann_price_Lira,
-            // 'tann_price_Dollar' => $request->tann_price_Dollar,
-    
-            // 'serepta_id' => $request->serepta,
-            // 'serep_price_Lira' => $request->serep_price_Lira,
-            // 'serep_price_Dollar' => $request->serep_price_Dollar,
-            
+                'name' => ['en' => $request->name_en, 'ar' => $request->name_ar],
+                'phone' => $request->phone,
+                'town_id' => $request->town_id,
+                'district_id' => $request->district_id,
+                'driver_id' => $request->driver_id,
             ]); 
     
+            // Load all towns, districts, and drivers
+            $towns = TownsModel::all();
+            $districts = DistrictsModel::all();
+            $drivers = DriversModel::all();
+    
+            // Find associated town, district, and driver
+            $town = $towns->find($request->town_id);
+            $district = $districts->find($request->district_id);
+            $driver = $drivers->find($request->driver_id);
+    
+            // If town, district, and driver are found, set their translations
+            if ($town) {
+                $update_customer->town_name_ar = $town->getTranslation('name', 'ar');
+                $update_customer->town_name_en = $town->getTranslation('name', 'en');
+            }
+    
+            if ($district) {
+                $update_customer->district_name_ar = $district->getTranslation('name', 'ar');
+                $update_customer->district_name_en = $district->getTranslation('name', 'en');
+            }
+    
+            if ($driver) {
+                $update_customer->driver_name_ar = $driver->getTranslation('name', 'ar');
+                $update_customer->driver_name_en = $driver->getTranslation('name', 'en');
+            }
+    
+            // Save the updated customer
+            $update_customer->save();
+    
+            // Redirect with success message
             toastr()->info(trans('messages.update'));
             return redirect()->route('Customers.index');
         } catch (\Exception $e) {
+            // Redirect with error message
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }
@@ -166,6 +209,30 @@ class CustomersController extends Controller
     {
         $list_districts = DistrictsModel::where("town_id", $id)->pluck("name", "id");
         return $list_districts;
+    }
+
+
+
+
+    // API
+    public function viewCustomers() 
+    {
+        $customers = CustomersModel::all();
+        
+        if($customers)    {
+                
+            return response()->json([
+                'status' => 'success',
+                'data' => $customers,
+            ]);
+        
+        }else{
+            return response()->json([
+                'status' => 'failure',
+                'data' => 'null',
+            ]);
+
+        }
     }
 
 

@@ -30,7 +30,7 @@ class StoreDrivers extends FormRequest
             'name_ar' => 'required'.$this->id,
             'name_en' => 'required'.$this->id,
             'phone' => 'required'.$this->id,
-            'password' => 'required',
+            'password' => 'required'.$this->id,
            // 'customer_id'=>'required'
           
         ];

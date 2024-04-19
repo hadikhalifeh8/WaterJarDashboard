@@ -132,14 +132,14 @@
                                            class="mr-sm-2">{{ trans('driversTransl.phne_no') }}
                                         :</label>
                                     <input type="number" step="1" min="0" class="form-control" name="phone" 
-                                    value="{{$V_drivers->phone}}">
+                                    value="{{$V_drivers->phone}}" required> 
                                 </div>
 
                                 <div class="col">
                                     <label for=""
                                            class="mr-sm-2">{{ trans('driversTransl.password') }}
                                         :</label>
-                                    <input type="password"  class="form-control" name="password" value="{{$V_drivers->password}}">
+                                    <input type="password"  class="form-control" name="password" value="{{$V_drivers->password}}" required>
                                 </div>
 
 
@@ -215,7 +215,7 @@
                     <div class="modal-header">
                         <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
                             id="exampleModalLabel">
-                            {{ trans('customersTransl.add_customer') }}
+                            {{ trans('driversTransl.add_driver') }}
                         </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>

@@ -128,4 +128,26 @@ class DriversController extends Controller
         return redirect()->route('Drivers.index');
     }
 
+
+   // API
+    public function viewDrivers()
+    {
+        $drivers = DriversModel::all();
+        
+         if($drivers)    {
+                 
+             return response()->json([
+                 'status' => 'success',
+                 'data' => $drivers,
+             ]);
+         
+         }else{
+             return response()->json([
+                 'status' => 'failure',
+                 'data' => 'null',
+             ]);
+ 
+         }
+    }
+
 }
