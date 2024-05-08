@@ -4,6 +4,8 @@ use App\Http\Controllers\CustomerOrders\CustomerOrdersController;
 use App\Http\Controllers\Customers\CustomersController;
 use App\Http\Controllers\Districts\DistrictsController;
 use App\Http\Controllers\Drivers\DriversController;
+use App\Http\Controllers\DriversCalculateJars\DriversCalculateJarsController;
+use App\Http\Controllers\DriversOrders\DriversOrdersController;
 use App\Http\Controllers\productontroller;
 use App\Http\Controllers\Serepta\SereptaController;
 use App\Http\Controllers\Tannourine\TannourineController;
@@ -33,7 +35,7 @@ Route::group(
         // HomePage
         Route::get('/', function()
         {
-            return view('empty');
+            return redirect()->route('Towns.index');
         });
 
         Route::resource('Towns', TownsController::class);
@@ -43,6 +45,12 @@ Route::group(
         Route::resource('Customers', CustomersController::class);
         Route::resource('Drivers', DriversController::class);
         Route::resource('CustomerOrders', CustomerOrdersController::class);
+        Route::resource('DriversOrders', DriversOrdersController::class);
+        Route::resource('DriversCalcalateJarsOrders', DriversCalculateJarsController::class);
+
+
+
+
 
         
 
@@ -77,8 +85,22 @@ Route::group(
 
 
 
+              // GET sum of JarsIn BY Driver
+
+        // Route::get('/Get_SumOfJarsIn/{id}', [DriversCalculateJarsController::class, 'getSumOfJarsIn']);
+        Route::get('/Get_JarsLoad/{id}', [DriversCalculateJarsController::class, 'getJarsLoad']);
+
+        Route::get('/Get_JarsIn/{id}', [DriversCalculateJarsController::class, 'getJarsIn']);
+
+        Route::get('/Get_JarsOut/{id}', [DriversCalculateJarsController::class, 'getJarsOut']);
+
+        Route::get('/Get_SumQtyOfJarsFillsReturned/{id}', [DriversCalculateJarsController::class, 'getSumQtyOfJarsFillsReturned']);
 
 
+
+        
+
+        
         
 
 

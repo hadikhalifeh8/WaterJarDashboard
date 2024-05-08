@@ -24,8 +24,8 @@ class StoreSerepta extends FormRequest
     public function rules()
     {
         return [
-            'List_Serepta.*.name_ar' => 'required|unique:districts,name->ar,'.$this->id,
-            'List_Serepta.*.name_en' => 'required|unique:districts,name->en,'.$this->id,
+            'List_Serepta.*.name_ar' => 'required|unique:serepta,name->ar,'.$this->id,
+            'List_Serepta.*.name_en' => 'required|unique:serepta,name->en,'.$this->id,
             'List_Serepta.*.price_Lira' => 'required',
             'List_Serepta.*.price_Dollar' => 'required',
 

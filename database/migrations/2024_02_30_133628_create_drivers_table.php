@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('phone')->unique();
             $table->string('password');
+            $table->string('totalJars')->nullable();
+
 
             // $table->bigInteger('customer_id')->unsigned();
 

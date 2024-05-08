@@ -90,6 +90,7 @@ class CustomerOrdersController extends Controller
             if ($driver) {
                 $insert_customers_orders->driver_name_ar = $driver->getTranslation('name', 'ar');
                 $insert_customers_orders->driver_name_en = $driver->getTranslation('name', 'en');
+                $insert_customers_orders->totalJars = $driver->totalJars;
             }
     
             if ($customer) {
@@ -195,6 +196,8 @@ class CustomerOrdersController extends Controller
             if ($driver) {
                 $update_customer_order->driver_name_ar = $driver->getTranslation('name', 'ar');
                 $update_customer_order->driver_name_en = $driver->getTranslation('name', 'en');
+              //  $update_customer_order->totalJars = $driver->driver_rltn->totalJars;
+
             }
     
             if ($customer) {

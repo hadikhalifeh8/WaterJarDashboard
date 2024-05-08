@@ -3,8 +3,8 @@ header start-->
 <nav class="admin-header navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <!-- logo -->
     <div class="text-left navbar-brand-wrapper">
-        <a class="navbar-brand brand-logo" href="{{ url('/dashboard') }}"><img src="{{ URL::asset('assets/images/logo-dark.png') }}" alt=""></a>
-        <a class="navbar-brand brand-logo-mini" href="{{ url('/dashboard') }}"><img src="{{ URL::asset('assets/images/logo-icon-dark.png') }}"
+        <a class="navbar-brand brand-logo" href="{{route('Towns.index')}}"><img src="{{ URL::asset('assets/images/logo-dark.png') }}" alt=""></a>
+        <a class="navbar-brand brand-logo-mini" href="{{route('Towns.index')}}"><img src="{{ URL::asset('assets/images/logo-icon-dark.png') }}"
                 alt=""></a>
 
 
@@ -15,7 +15,7 @@ header start-->
             <a id="button-toggle" class="button-toggle-nav inline-block ml-20 pull-left"
                 href="javascript:void(0);"><i class="zmdi zmdi-menu ti-align-right"></i></a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <div class="search">
                 <a class="search-btn not_click" href="javascript:void(0);"></a>
                 <div class="search-box not-click">
@@ -24,7 +24,7 @@ header start-->
                     <button class="search-button" type="submit"> <i class="fa fa-search not-click"></i></button>
                 </div>
             </div>
-        </li>
+        </li> -->
     </ul>
     <!-- top bar right -->
     <ul class="nav navbar-nav ml-auto">
@@ -51,7 +51,7 @@ header start-->
         <li class="nav-item fullscreen">
             <a id="btnFullscreen" href="#" class="nav-link"><i class="ti-fullscreen"></i></a>
         </li>
-        <li class="nav-item dropdown ">
+        <!-- <li class="nav-item dropdown ">
             <a class="nav-link top-nav" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                 aria-expanded="false">
                 <i class="ti-bell"></i>
@@ -74,8 +74,8 @@ header start-->
                 <a href="#" class="dropdown-item">Order confirmation<small class="float-right text-muted time">2
                         days</small> </a>
             </div>
-        </li>
-        <li class="nav-item dropdown ">
+        </li> -->
+        <!-- <li class="nav-item dropdown ">
             <a class="nav-link top-nav" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                 aria-expanded="true"> <i class=" ti-view-grid"></i> </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-big">
@@ -100,7 +100,7 @@ header start-->
                     </a>
                 </div>
             </div>
-        </li>
+        </li> -->
         <li class="nav-item dropdown mr-30">
             <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="#" role="button"
                 aria-haspopup="true" aria-expanded="false">
@@ -118,14 +118,14 @@ header start-->
                     </div>
                 </div>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#"><i class="text-secondary ti-reload"></i>Activity</a>
+                <!-- <a class="dropdown-item" href="#"><i class="text-secondary ti-reload"></i>Activity</a>
                 <a class="dropdown-item" href="#"><i class="text-success ti-email"></i>Messages</a>
                 <a class="dropdown-item" href="#"><i class="text-warning ti-user"></i>Profile</a>
                 <a class="dropdown-item" href="#"><i class="text-dark ti-layers-alt"></i>Projects <span
                         class="badge badge-info">6</span> </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>Settings</a>
-                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="text-danger ti-unlock"></i>{{ __('Sidebar_trans.Logoff') }}</a>
+                <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>Settings</a> -->
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="text-danger ti-unlock"></i>{{ __('main_sideBarTransl.Logoff') }}</a>
                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                   @csrf
                 </form>

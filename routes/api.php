@@ -33,6 +33,9 @@ Route::any('/viewDrivers', [DriversController::class, 'viewDrivers']);
 Route::any('/viewCustomers', [CustomersController::class, 'viewCustomers']);
 Route::any('/viewCustomerOrder', [CustomerOrdersController::class, 'viewCustomerOrder']);
 
+Route::any('/insertDriverOrders', [DriversController::class, 'insertDriverOrders']);
+
+
 
 
 

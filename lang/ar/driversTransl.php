@@ -4,6 +4,7 @@ return [
 // view towns table
 
 'Drivers_List' => 'السائق',
+'Drivers_Returned_Jars' => 'الجرائر المحمله والمرتجعه',
 
 
 'add_driver' =>'إضافة سائق',
@@ -15,11 +16,12 @@ return [
 'name_en' => 'الإسم بالإنجليزي',
 'phne_no' => 'رقم الهاتف',
 
-'password'=>'الرقم السري',
+'password'=>'كلمة المرور',
 
 'customer_table'=>'الزبائن',
 'customer_name'=> 'الزبائن',
 'choose_a_customer'=>'... إخترالزبون',
+'totalJars' => 'عدد الجرائر المحمله',
 
 
 
@@ -60,6 +62,13 @@ return [
 'unique_name_ar'=>'إسم السائق بالعربيه موجود سابقا',
 'unique_name_en'=>'إسم السائق بالإنجليزيه موجود سابقا',
 'unique_phone'=>'رقم الهاتف موجود سابقا',
+
+
+
+'qty_Jars_Load' => 'عدد الجرائر المجمله',
+'Quantity_Jar_In' => 'عدد الجرائر المباعه',
+'Quantity_Jar_Out' => 'عدد الجرائر الفارغه',
+'qty_Jars_returned_Fill' => 'عدد الجرائر الباقيه',
 
 
 

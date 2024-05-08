@@ -26,6 +26,24 @@ return [
 'Orders_List'=>'Orders',
 'ViewOrders_List'=> 'View All Orders',
 
+'DriversOrders' => 'Drivers Orders',
+'ViewALLDrivers_Orders_List' => 'Drivers_Orders',
+
+
+'Load_Returned_Jars' => 'Load and Returned Jars',
+'View_ALL_Load_Returned_Jars' => 'View ALL Load Returned Jars',
+
+
+'Logoff' => 'LogOut',
+
+'Copyright' => 'Copyright',
+'Name_Programer' => 'Khalifeh tech. +961 79304037',
+
+
+
+
+
+
 
 
 

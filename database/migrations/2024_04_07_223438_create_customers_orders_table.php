@@ -19,6 +19,8 @@ return new class extends Migration
             $table->bigInteger('driver_id')->unsigned();
             $table->string('driver_name_ar')->nullable();
             $table->string('driver_name_en')->nullable();
+            $table->string('totalJars')->nullable();
+
 
 
             $table->bigInteger('customer_id')->unsigned();

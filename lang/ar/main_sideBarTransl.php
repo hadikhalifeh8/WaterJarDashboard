@@ -32,8 +32,20 @@ return [
 'Orders_List'=>'الفواتير',
 'ViewOrders_List'=> 'قائمة الفواتير',
 
+'DriversOrders' => 'فواتير السائقين',
+'ViewALLDrivers_Orders_List' => 'عرض فواتير السائقين',
 
 
+'Load_Returned_Jars' => 'الجرائر المحمله والمرتجعه',
+'View_ALL_Load_Returned_Jars' => 'عرض الجرائر المحمله والمرتجعه',
+
+
+'Logoff' => 'تسجيل الخروج',
+
+
+
+'Copyright' => 'حقوق النشر',
+'Name_Programer' => 'خليفه تك.  79304037 961+ ',
 
 
 ];

@@ -106,6 +106,9 @@
                                                 {{ method_field('patch') }}
                                                 @csrf
                                                 <div class="row">
+                                                   
+                                                    
+
                                                     <div class="col">
                                                         <label for="Name"
                                                                class="mr-sm-2">{{ trans('sereptaTransl.name_ar') }}
@@ -117,6 +120,8 @@
                                                         <input id="id" type="hidden" name="id" class="form-control"
                                                                value="{{$V_serepta->id}}">
                                                     </div>
+
+
                                                     <div class="col">
                                                         <label for="Name"
                                                                class="mr-sm-2">{{ trans('sereptaTransl.name_en') }}
@@ -232,20 +237,22 @@
                                 <div data-repeater-item>
                                     <div class="row">
 
-                                        <div class="col">
+
+                                    <div class="col">
                                             <label for="Name"
                                                 class="mr-sm-2">{{ trans('sereptaTransl.name_ar') }}
                                                 :</label>
                                             <input class="form-control" type="text" name="name_ar" />
                                         </div>
 
-
+                                
                                         <div class="col">
                                             <label for="Name"
                                                 class="mr-sm-2">{{ trans('sereptaTransl.name_en') }}
                                                 :</label>
                                             <input class="form-control" type="text" name="name_en" />
                                         </div>
+
 
 
                                         <div class="col">

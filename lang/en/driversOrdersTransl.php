@@ -3,11 +3,38 @@
 return [
 // view towns table
 
-'Customers_Orders_List' => 'Customers Order',
+'Drivers_Orders_List' => 'Drivers Orders',
 
 
-'add_customer_order' =>'Add Customer Order',
-'update_customer' =>'update Customer Order',
+'customer_table' => 'Customer',
+'town_table' => 'Town',
+'districts_table' => 'Districts',
+'total_price_table' => 'Total Price',
+'process' => 'Process',
+
+'driver_name' => 'Driver',
+'customer_name' => 'Customer',
+'town_name' => 'Town',
+'district_name' => 'District',
+'serepta_name' => 'Jar Name',
+'srpta_price_Lira' => 'Jar price',
+'qty_jar_in' => 'Quantity Jar In',
+'qty_jar_out' => 'Quantity Jar Out',
+'qty_previous_jars' => 'Previous Jars',
+'total_jar' => 'Quantity Of Total Jars',
+'total_price_jars' => 'Total Price Of Jars',
+'old_debt' => 'Old Debt',
+'new_debt' => 'New Debt',
+'paid' => 'Paid',
+'total_price' => 'Total Price',
+
+'sumOfTotalPrice' => 'Sum OF Total Price',
+
+
+
+
+
+
 
 
 

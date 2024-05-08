@@ -4,6 +4,8 @@ return [
 // view towns table
 
 'Drivers_List' => 'Drivers',
+'Drivers_Returned_Jars' => 'Loaded and Returned Jars',
+
 
 
 
@@ -20,6 +22,8 @@ return [
 'customer_name'=>'customers',
 'customer_name'=> 'customers',
 'choose_a_customer'=>'choose a customer ...',
+'totalJars' => 'Number of loaded Jars',
+
 
 
 
@@ -56,6 +60,7 @@ return [
 
 
 
+
 // storeRequst
 'validation_name_ar' => 'Please Enter the name in Arabic',
 'validation_name_en' => 'Please Enter the name in English',
@@ -66,6 +71,14 @@ return [
 'unique_name_ar'=>'The Driver name in Arabic is used before',
 'unique_name_en'=>'The Driver name in English is used before',
 'unique_phone'=>'The Phone number is used before',
+
+
+
+'qty_Jars_Load' => 'number of Loaded Jars',
+'Quantity_Jar_In' => 'Quantity Jar In',
+'Quantity_Jar_Out' => 'Quantity Jar Out',
+'qty_Jars_returned_Fill' => 'returned Fill Jars',
+
 
 
 ];

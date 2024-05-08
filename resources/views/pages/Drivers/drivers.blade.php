@@ -145,6 +145,14 @@
 
                             </div><br>
 
+                            <div class="col">
+                                    <label for=""
+                                           class="mr-sm-2">{{ trans('driversTransl.totalJars') }}
+                                        :</label>
+                                    <input type="number" step="1" min="0" class="form-control" name="totalJars" 
+                                    value="{{$V_drivers->totalJars}}" required> 
+                                </div>
+
 
                             
 
@@ -263,6 +271,14 @@
                                 </div>
            
                         </div><br>
+
+
+                        <div class="col">
+                                            <label for=""
+                                                class="mr-sm-2">{{ trans('driversTransl.totalJars')}}
+                                                :</label>
+                                            <input class="form-control" type="number" step="1" min="0" name="totalJars" onkeypress="return restrictChars(event)"/>
+                                        </div>
 
 
 

@@ -78,6 +78,7 @@ return [
 // storeRequst
 'validation_driver'=>'الرجاءإدخال السائق',
 'validation_customer'=>'الرجاء إدخال الزبون',
+'validation_customer_unique' => 'إسم الزبون موجود سابقا',
 
 'validation_town' => 'الرجاء إدخال البلده',
 'validation_district' => 'الرجاء إدخال المنطقه',

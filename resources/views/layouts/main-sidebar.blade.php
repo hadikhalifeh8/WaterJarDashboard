@@ -6,13 +6,13 @@
                 <ul class="nav navbar-nav side-menu" id="sidebarnav">
                     
                 <!-- menu item Dashboard-->
-                    <li>
+                    <!-- <li>
     <a href="{{ url('/dashboard') }}">
         <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{trans('main_sideBarTransl.Dashboard')}}</span>
         </div>
         <div class="clearfix"></div>
     </a>
-</li>
+</li> -->
                     <!-- Towns  -->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#towns-menu">
@@ -55,7 +55,7 @@
 
 
                     <!-- Tannourine-->
-                    <li>
+                    <!-- <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#tannourine-menu">
                             <div class="pull-left"><i class='fas fa-prescription-bottle-alt'></i></i><span
                                     class="right-nav-text">{{trans('main_sideBarTransl.Tannourine_List')}}</span></div>
@@ -65,7 +65,7 @@
                         <ul id="tannourine-menu" class="collapse" data-parent="#sidebarnav">
                             <li><a href="{{route('Tannourine.index')}}">{{trans('main_sideBarTransl.ViewTannourine_List')}}</a></li>
                         </ul>
-                    </li>
+                    </li> -->
 
 
 
@@ -115,127 +115,47 @@
 
 
 
+
+
+
+                    <!-- Drivers Orders-->
+                                        <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#drivers_orders-menu">
+                            <div class="pull-left"><i class="fas fa-shopping-cart"></i></i><span
+                                    class="right-nav-text">{{trans('main_sideBarTransl.DriversOrders')}}</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="drivers_orders-menu" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{route('DriversOrders.index')}}">{{trans('main_sideBarTransl.ViewALLDrivers_Orders_List')}}</a></li>
+                        </ul>
+                    </li>
+
+
+
+                    
+                    <!-- Drivers Jars Calculates-->
+                    <!-- <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#drivers_calcualte-menu">
+                            <div class="pull-left"><i class="fas fa-shopping-cart"></i></i><span
+                                    class="right-nav-text">{{trans('main_sideBarTransl.Load_Returned_Jars')}}</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="drivers_calcualte-menu" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{route('DriversCalcalateJarsOrders.index')}}">{{trans('main_sideBarTransl.View_ALL_Load_Returned_Jars')}}</a></li>
+                        </ul>
+                    </li> -->
+
+
+
                     
 
 
                 
 
 
-                    <!-- Parents-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Parents-menu">
-                            <div class="pull-left"><i class="fas fa-user-tie"></i><span
-                                    class="right-nav-text">{{trans('main_trans.Parents')}}</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="Parents-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="calendar.html">Events Calendar </a> </li>
-                            <li> <a href="calendar-list.html">List Calendar</a> </li>
-                        </ul>
-                    </li>
 
-                    <!-- Accounts-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Accounts-menu">
-                            <div class="pull-left"><i class="fas fa-money-bill-wave-alt"></i><span
-                                    class="right-nav-text">{{trans('main_trans.Accounts')}}</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="Accounts-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="calendar.html">Events Calendar </a> </li>
-                            <li> <a href="calendar-list.html">List Calendar</a> </li>
-                        </ul>
-                    </li>
-
-                    <!-- Attendance-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Attendance-icon">
-                            <div class="pull-left"><i class="fas fa-calendar-alt"></i><span class="right-nav-text">{{trans('main_trans.Attendance')}}</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="Attendance-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                            <li> <a href="themify-icons.html">Themify icons</a> </li>
-                            <li> <a href="weather-icon.html">Weather icons</a> </li>
-                        </ul>
-                    </li>
-
-                    <!-- Exams-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Exams-icon">
-                            <div class="pull-left"><i class="fas fa-book-open"></i><span class="right-nav-text">{{trans('main_trans.Exams')}}</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="Exams-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                            <li> <a href="themify-icons.html">Themify icons</a> </li>
-                            <li> <a href="weather-icon.html">Weather icons</a> </li>
-                        </ul>
-                    </li>
-
-
-                    <!-- library-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#library-icon">
-                            <div class="pull-left"><i class="fas fa-book"></i><span class="right-nav-text">{{trans('main_trans.library')}}</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="library-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                            <li> <a href="themify-icons.html">Themify icons</a> </li>
-                            <li> <a href="weather-icon.html">Weather icons</a> </li>
-                        </ul>
-                    </li>
-
-
-                    <!-- Onlinec lasses-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Onlineclasses-icon">
-                            <div class="pull-left"><i class="fas fa-video"></i><span class="right-nav-text">{{trans('main_trans.Onlineclasses')}}</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="Onlineclasses-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                            <li> <a href="themify-icons.html">Themify icons</a> </li>
-                            <li> <a href="weather-icon.html">Weather icons</a> </li>
-                        </ul>
-                    </li>
-
-
-                    <!-- Settings-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Settings-icon">
-                            <div class="pull-left"><i class="fas fa-cogs"></i><span class="right-nav-text">{{trans('main_trans.Settings')}}</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="Settings-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                            <li> <a href="themify-icons.html">Themify icons</a> </li>
-                            <li> <a href="weather-icon.html">Weather icons</a> </li>
-                        </ul>
-                    </li>
-
-
-                    <!-- Users-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Users-icon">
-                            <div class="pull-left"><i class="fas fa-users"></i><span class="right-nav-text">{{trans('main_trans.Users')}}</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="Users-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                            <li> <a href="themify-icons.html">Themify icons</a> </li>
-                            <li> <a href="weather-icon.html">Weather icons</a> </li>
-                        </ul>
-                    </li>
 
                 </ul>
             </div>

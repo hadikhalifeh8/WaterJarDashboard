@@ -27,10 +27,10 @@ class StoreDrivers extends FormRequest
             // 'name_ar' => 'required|unique:drivers,name->ar,'.$this->id,
             // 'name_en' => 'required|unique:drivers,name->en,'.$this->id,
             // 'phone' => 'required|unique:drivers,phone,'.$this->id,
-            'name_ar' => 'required'.$this->id,
-            'name_en' => 'required'.$this->id,
-            'phone' => 'required'.$this->id,
-            'password' => 'required'.$this->id,
+            'name_ar' => 'required|unique:drivers,name->ar,'.$this->id,
+            'name_en' => 'required|unique:drivers,name->en,'.$this->id,
+            'phone' => 'required|unique:drivers,phone,'.$this->id,
+            'password' => 'required',
            // 'customer_id'=>'required'
           
         ];

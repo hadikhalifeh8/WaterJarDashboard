@@ -12,8 +12,8 @@ return [
 'update_product' =>'Update Product',
 
 
-'name_ar' => 'Name English',
-'name_en' => 'Name Arabic',
+'name_ar' => 'Name Arabic',
+'name_en' => 'Name English',
 
 'close' => 'Close',
 'submit' => 'Submit',
